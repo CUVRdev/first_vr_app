@@ -12,17 +12,10 @@ public class AutoFly : MonoBehaviour {
 	// Whether or not player is flying
 	private bool isFlying;
 
-	// The Camera in the Head
-	private Camera headCamera;
-
-
 	// Use this for initialization
 	void Start () {
 		// Stationary start
 		isFlying = false;
-
-		// Initialize headCamera to the Camera in the child of Head
-		headCamera = this.GetComponentInChildren<Camera> ();
 	}
 
 	// Update is called once per frame
@@ -34,11 +27,11 @@ public class AutoFly : MonoBehaviour {
 			isFlying = !isFlying;
 		}
 
-		// Move Head if flying
+		// Move Camera if flying
 		if (isFlying) {
-			// Translate the Head by getting the forward vector from the headCamera
+			// Translate the Camera by getting the forward vector from the Camera
 			// Time.deltaTime will smooth out the movement
-			this.transform.position += headCamera.transform.forward * Time.deltaTime * speed;
+			this.transform.position += this.transform.forward * Time.deltaTime * speed;
 		}
 	}
 }
